@@ -20,6 +20,12 @@ while True:
     # process hand
     output = myHands.process(rgbImage)
     hands = output.multi_hand_landmarks
+
+    '''TODO: {
+        create nvidia highlits binds
+    }'''
+
+    #volume control
     if hands:
         for hand in hands:
             drawingUtils.draw_landmarks(img, hand)
@@ -38,6 +44,7 @@ while True:
 
         # calculate distance between points to adjust volume
         dist = ((x2-x1) **2 + (y2-y1)**2) ** (0.5) // 4
+        print(dist)
         #draw line after capturing points position
         cv.line(img, (x1,y1),(x2,y2),(0,0,0),5)
         if dist > 30:
